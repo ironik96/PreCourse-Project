@@ -19,7 +19,8 @@
  * sumOdds([3, 7, 8, 15, 2, 1, 13]) -> 39
  */
 function sumOdds(numbers) {
-  // Your code here
+  let oddArr = numbers.filter((num) => num % 2 !== 0);
+  return oddArr.reduce((prev, next) => prev + next, 0);
 }
 // console.log(sumOdds([3, 7, 8, 15, 2, 1, 13]));
 
@@ -37,8 +38,14 @@ function sumOdds(numbers) {
  * Another Hint: Use string methods to make it case-insensitive
  */
 function characterCount(string, c) {
-  // Your code here
+  let chars = Array.from(string);
+  let count = 0;
+  chars.forEach((char) => {
+    if (char.toLowerCase() === c.toLowerCase()) count += 1;
+  });
+  return count;
 }
+
 // console.log(characterCount("Character Count is clever", "c"));
 
 /**
@@ -58,7 +65,12 @@ function characterCount(string, c) {
  * largestIncrement([11, 35, 52, 14, 56, 601, 777, 888, 999]) -> 545
  */
 function largestIncrement(numbers) {
-  // Your code here
+  let largest = 0;
+  for (let index = 1; index < numbers.length; index++) {
+    let difference = numbers[index] - numbers[index - 1];
+    if (difference > largest) largest = difference;
+  }
+  return largest;
 }
 // console.log(largestIncrement([11, 35, 52, 14, 56, 601, 777, 888, 999]));
 
@@ -74,7 +86,8 @@ function largestIncrement(numbers) {
  * afterX([11, 35, 52, 14, 56, 601, 777, 888, 999], 52) -> [14, 56, 601, 777, 888, 999]
  */
 function afterX(numbers, x) {
-  // Your code here
+  let xIndex = numbers.indexOf(x);
+  return numbers.slice(xIndex + 1, numbers.length);
 }
 // console.log(afterX([1, 2, 3, 4, 5, 6, 7, 8, 9], 3));
 
@@ -90,7 +103,9 @@ function afterX(numbers, x) {
  * Hint: Use string method .toUpperCase()
  */
 function abbreviate(firstName, lastName) {
-  // Your code here
+  let firstIn = firstName.charAt(0).toUpperCase();
+  let lastIn = lastName.charAt(0).toUpperCase();
+  return firstIn + lastIn;
 }
 // console.log(abbreviate("miss", "Stephane"));
 
@@ -105,9 +120,8 @@ function abbreviate(firstName, lastName) {
  *
  */
 function isUpperCase(string) {
-  // Your code here
+  return string === string.toUpperCase();
 }
-
 // console.log(isUpperCase("JCREW"));
 
 /**
@@ -121,7 +135,7 @@ function isUpperCase(string) {
  *
  */
 function elementInArray(numbers, x) {
-  // Your code here
+  return numbers.indexOf(x) !== -1;
 }
 // console.log(elementInArray([5, 6, 7], 8));
 
